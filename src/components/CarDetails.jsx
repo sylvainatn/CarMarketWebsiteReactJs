@@ -59,7 +59,7 @@ const CarDetails = () => {
 
             {/* Bloc du Vendeur avec les boutons */}
             <div style={{ marginTop: '20px', padding: '20px', backgroundColor: '#f8f9fa', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
-              
+
               {/* Profil du Vendeur */}
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
                 <img

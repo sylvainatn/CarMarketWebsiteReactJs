@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +14,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container" style={{ maxWidth: '400px', marginTop: '50px' }}>
+    <div className="container" style={{ maxWidth: '400px', marginTop: '50px', marginBottom: '' }}>
       <h2 className="text-center">Connexion</h2>
       <form onSubmit={handleLogin}>
         <div className="mb-3">
@@ -38,7 +39,7 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary w-100">Se connecter</button>
+        <button type="submit" className="btn btn-danger w-100">Se connecter</button>
       </form>
       <p className="text-center mt-3">
         Vous n'avez pas de compte ? <Link to="/signup">Inscrivez-vous</Link>

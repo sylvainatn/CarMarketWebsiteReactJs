@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import CarList from './components/CarList';
 import Carousel from './components/Carousel';
 import CarDetails from './components/CarDetails';
-import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
 import Favorites from './components/Favorites';
-import { cars } from './data';
+import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
+import SellPage from './components/SellPage';
+import { cars as initialCars } from './data';
 
 function App() {
-  
+
+  const [cars, setCars] = useState(initialCars);
+
+  const addCar = (newCar) => {
+    setCars((prevCars) => [...prevCars, newCar]);
+  };
+
   const [favorites, setFavorites] = useState([]);
 
   const addToFavorites = (car) => {
@@ -20,6 +28,16 @@ function App() {
       }
       return [...prevFavorites, car]; // Ajouter à la liste des favoris
     });
+  };
+
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
   };
 
   return (
@@ -47,14 +65,11 @@ function App() {
               </div>
             }
           />
-          <Route
-            path="/cars/:id"
-            element={<CarDetails />}
-          />
-          <Route
-            path="/favorites"
-            element={<Favorites favorites={favorites} />} // Passer les favoris au composant Favorites
-          />
+          <Route path="/cars/:id" element={<CarDetails />} />
+          <Route path="/favorites" element={<Favorites favorites={favorites} />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/vendre" element={<SellPage addCar={addCar} />} />
         </Routes>
       </Router>
       <br />

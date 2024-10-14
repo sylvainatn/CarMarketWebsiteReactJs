@@ -106,5 +106,41 @@ export const cars = [
       memberSince: 'Juin 2020',
       location: 'Toulouse, France'
     }
+  },
+  {
+    id: 7,
+    name: 'Volkswagen',
+    year: 2020,
+    mileage: 150000,
+    fuel: 'Essence',
+    transmission: 'Manuelle',
+    location: 'Paris',
+    price: 15000,
+    image: '/images/car7.jpg',
+    seller: {
+      name: 'Emma Roussel',
+      profileImage: '/images/seller-emma.jpg',
+      rating: 4.7,
+      memberSince: 'Juin 2020',
+      location: 'Toulouse, France'
+    }
+  },
+  {
+    id: 8,
+    name: 'Volkswagen',
+    year: 2020,
+    mileage: 150000,
+    fuel: 'Essence',
+    transmission: 'Manuelle',
+    location: 'Paris',
+    price: 15000,
+    image: '/images/car8.jpg',
+    seller: {
+      name: 'Emma Roussel',
+      profileImage: '/images/seller-emma.jpg',
+      rating: 4.7,
+      memberSince: 'Juin 2020',
+      location: 'Toulouse, France'
+    }
   }
 ];

@@ -7,6 +7,7 @@ const Footer = () => {
     <footer className="bg-dark text-light py-4">
       <div className="container">
         <div className="row">
+
           {/* Section 1: À propos */}
           <div className="col-md-4">
             <h5 className="mb-3">À propos</h5>
@@ -28,7 +29,7 @@ const Footer = () => {
           <div className="col-md-4">
             <h5 className="mb-3">Contactez-nous</h5>
             <p>Email: contact@carmarket.com</p>
-            <p>Téléphone: +33 1 23 45 67 89</p>
+            <p>Téléphone: +33 0 00 00 00 00</p>
 
             <h6 className="mb-2">Suivez-nous</h6>
             <div>
