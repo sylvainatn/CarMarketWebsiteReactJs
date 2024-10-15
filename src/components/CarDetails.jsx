@@ -15,8 +15,8 @@ const CarDetails = () => {
       <div className="container" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '20px' }}>
         {/* Section Informations principales */}
         <div className="row mb-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {/* Image et informations essentielles */}
 
+          {/* Image et informations essentielles */}
           <div
             className="col-md-5"
             style={{

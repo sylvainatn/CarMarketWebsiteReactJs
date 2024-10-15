@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CarItem = ({ car, addToFavorites, showAddToFavorites }) => {
+  
   const handleAddToFavorites = () => {
     addToFavorites(car);
     alert(`${car.name} a été ajouté aux favoris !`);
@@ -32,8 +33,6 @@ const CarItem = ({ car, addToFavorites, showAddToFavorites }) => {
         </button>
       )}
     </div>
-
-
   );
 };
 
