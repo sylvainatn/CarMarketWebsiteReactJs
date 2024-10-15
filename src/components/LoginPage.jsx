@@ -9,7 +9,6 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Logique de connexion ici, par exemple envoyer à une API
     console.log('Connexion:', { email, password });
   };
 
