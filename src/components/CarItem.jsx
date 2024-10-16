@@ -1,16 +1,25 @@
 // src/components/CarItem.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'; // Importation de Framer Motion
 
 const CarItem = ({ car, addToFavorites, showAddToFavorites }) => {
-  
+
   const handleAddToFavorites = () => {
     addToFavorites(car);
     alert(`${car.name} a été ajouté aux favoris !`);
   };
 
   return (
-    <div className="card h-100 d-flex flex-column" style={{ margin: '10px', cursor: 'pointer', position: 'relative' }}>
+    <motion.div
+      className="card h-100 d-flex flex-column"
+      style={{ margin: '10px', cursor: 'pointer', position: 'relative' }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.30 }}
+      whileHover={{ scale: 1.05 }}
+    >
       <Link to={`/cars/${car.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <img src={car.image} className="card-img-top" alt={car.name} />
         <div className="card-body">
@@ -32,7 +41,7 @@ const CarItem = ({ car, addToFavorites, showAddToFavorites }) => {
           Ajouter aux Favoris
         </button>
       )}
-    </div>
+    </motion.div>
   );
 };
 
