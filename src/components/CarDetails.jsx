@@ -1,19 +1,29 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react'; // Importer useState pour gérer l'état local
 import { cars } from '../data';
 
 const CarDetails = () => {
   const { id } = useParams();
-  //const navigate = useNavigate();
+  const [isFavorited, setIsFavorited] = useState(false); // Gérer si la voiture est dans les favoris ou non
   const car = cars.find((car) => car.id === parseInt(id));
 
   if (!car) {
     return <div className="text-center">Voiture non trouvée</div>;
   }
 
+  // Fonction pour gérer l'ajout ou le retrait des favoris
+  const handleFavoriteToggle = () => {
+    setIsFavorited(!isFavorited);
+    alert(
+      isFavorited
+        ? 'Voiture retirée des favoris.'
+        : 'Voiture ajoutée aux favoris.'
+    );
+  };
+
   return (
     <div style={{ padding: '20px', backgroundColor: '#f4f4f4' }}>
       <div className="container" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '20px' }}>
-        {/* Section Informations principales */}
         <div className="row mb-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
 
           {/* Image et informations essentielles */}
@@ -26,41 +36,45 @@ const CarDetails = () => {
               boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between', // Permet de séparer le contenu et les boutons
-              height: '100%' // S'assure que le contenu remplit la hauteur du conteneur
-            }} >
+              justifyContent: 'space-between',
+              height: '100%'
+            }}
+          >
             <img
               src={car.image || '/path/to/default-image.jpg'}
               alt={`${car.brand} ${car.model}`}
               className="img-fluid rounded shadow mb-3"
               style={{ borderRadius: '10px', maxHeight: '100%', objectFit: 'cover' }}
             />
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>{car.brand} {car.model}</h2>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+              {car.brand} {car.model}
+            </h2>
 
-            {/* Informations principales */}
             <p style={{ fontSize: '1rem', color: '#555' }}><strong>Localisation : </strong>{car.location}</p>
             <p style={{ fontSize: '1rem', color: '#555' }}><strong>Année : </strong>{car.year}</p>
             <p style={{ fontSize: '1rem', color: '#555' }}><strong>Kilométrage : </strong>{car.mileage || 'Non spécifié'} km</p>
             <p style={{ fontSize: '1rem', color: '#555' }}><strong>Énergie : </strong>{car.fuel}</p>
 
-            {/* Stylisation du prix */}
             <p style={{
-              fontSize: '1rem', // Taille plus grande
-              color: '#000', // Rouge attirant
-              fontWeight: 'bold', // Texte en gras
-              fontFamily: '"Lobster", cursive', // Police attrayante comme Lobster
-              margin: '10px 0' // Un peu de marge autour
+              fontSize: '1rem',
+              color: '#000',
+              fontWeight: 'bold',
+              fontFamily: '"Lobster", cursive',
+              margin: '10px 0'
             }}>
               Prix : {car.price}€
-            </p><br></br>
+            </p><br />
 
             <p style={{ fontSize: '1rem', color: '#555' }}>06/10/2024 à 17:42</p>
 
-
             {/* Bloc du Vendeur avec les boutons */}
-            <div style={{ marginTop: '20px', padding: '20px', backgroundColor: '#f8f9fa', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
-
-              {/* Profil du Vendeur */}
+            <div style={{
+              marginTop: '20px',
+              padding: '20px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '10px',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
+            }}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
                 <img
                   src={car.seller.profileImage}
@@ -75,7 +89,7 @@ const CarDetails = () => {
                 </div>
               </div>
 
-              {/* Boutons Réserver et Envoyer un Message */}
+              {/* Boutons Réserver, Message, et Ajouter aux Favoris */}
               <div style={{ marginTop: '20px' }}>
                 <button
                   style={{
@@ -105,20 +119,37 @@ const CarDetails = () => {
                     cursor: 'pointer',
                     fontSize: '1rem',
                     fontWeight: 'bold',
-                    width: '100%'
+                    width: '100%',
+                    marginBottom: '10px'
                   }}
                   onClick={() => alert('Envoyez un message au vendeur.')}
                 >
                   Envoyer un message
                 </button>
+
+                {/* Nouveau bouton Ajouter aux Favoris */}
+                <button
+                  style={{
+                    backgroundColor: isFavorited ? '#dc3545' : '#28a745', // Rouge si déjà favori, vert sinon
+                    color: '#fff',
+                    padding: '10px 20px',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                    width: '100%'
+                  }}
+                  onClick={handleFavoriteToggle}
+                >
+                  {isFavorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                </button>
               </div>
             </div>
           </div>
 
-
           {/* Informations détaillées du véhicule */}
           <div className="col-md-6" style={{ padding: '20px', backgroundColor: '#ffffff', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}>
-
             {/* Générale */}
             <h4 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Générale</h4>
             <ul style={{ listStyleType: 'none', padding: 0 }}>
