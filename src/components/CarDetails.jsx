@@ -1,31 +1,39 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react'; // Importer useState pour gérer l'état local
+import { useState, useEffect } from 'react'; // Importer useState pour gérer l'état local
 import { cars } from '../data';
 
-const CarDetails = () => {
+const CarDetails = ({ addToFavorites, removeFromFavorites, favorites }) => {
   const { id } = useParams();
-  const [isFavorited, setIsFavorited] = useState(false); // Gérer si la voiture est dans les favoris ou non
   const car = cars.find((car) => car.id === parseInt(id));
+
+  // Vérifie si la voiture existe avant d'utiliser useState
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // Utilise useEffect pour mettre à jour l'état de 'isFavorite' lorsque 'favorites' change
+  useEffect(() => {
+    if (car) {
+      setIsFavorite(favorites.some(favorite => favorite.id === car.id));
+    }
+  }, [car, favorites]); // Exécute cet effet quand 'car' ou 'favorites' changent
 
   if (!car) {
     return <div className="text-center">Voiture non trouvée</div>;
   }
 
-  // Fonction pour gérer l'ajout ou le retrait des favoris
-  const handleFavoriteToggle = () => {
-    setIsFavorited(!isFavorited);
-    alert(
-      isFavorited
-        ? 'Voiture retirée des favoris.'
-        : 'Voiture ajoutée aux favoris.'
-    );
+  const handleToggleFavorite = () => {
+    if (isFavorite) {
+      removeFromFavorites(car);
+      setIsFavorite(false);
+    } else {
+      addToFavorites(car);
+      setIsFavorite(true);
+    }
   };
 
   return (
     <div style={{ padding: '20px', backgroundColor: '#f4f4f4' }}>
       <div className="container" style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '20px' }}>
         <div className="row mb-4" style={{ display: 'flex', justifyContent: 'space-between' }}>
-
           {/* Image et informations essentielles */}
           <div
             className="col-md-6"
@@ -41,7 +49,7 @@ const CarDetails = () => {
             }}
           >
             <img
-              src={car.image || '/path/to/default-image.jpg'}
+              src={car.image}
               alt={`${car.brand} ${car.model}`}
               className="img-fluid rounded shadow mb-3"
               style={{ borderRadius: '10px', maxHeight: '100%', objectFit: 'cover' }}
@@ -66,6 +74,19 @@ const CarDetails = () => {
             </p><br />
 
             <p style={{ fontSize: '1rem', color: '#555' }}>06/10/2024 à 17:42</p>
+
+            {/* Bouton Ajouter aux Favoris */}
+            <button
+              onClick={handleToggleFavorite} // Appelle la fonction pour gérer l'état
+              className={`btn ${isFavorite ? 'btn-outline-warning' : 'btn-outline-danger'}`} // Classe CSS conditionnelle
+              style={{
+                width: '160px', // Ajustement ici, vous pouvez essayer différentes valeurs
+                cursor: 'pointer',
+              }}
+            >
+              {isFavorite ? 'Retirer des Favoris' : 'Ajouter aux Favoris'} {/* Change le texte en fonction de l'état */}
+            </button>
+
 
             {/* Bloc du Vendeur avec les boutons */}
             <div style={{
@@ -125,24 +146,6 @@ const CarDetails = () => {
                   onClick={() => alert('Envoyez un message au vendeur.')}
                 >
                   Envoyer un message
-                </button>
-
-                {/* Nouveau bouton Ajouter aux Favoris */}
-                <button
-                  style={{
-                    backgroundColor: isFavorited ? '#dc3545' : '#28a745', // Rouge si déjà favori, vert sinon
-                    color: '#fff',
-                    padding: '10px 20px',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    fontSize: '1rem',
-                    fontWeight: 'bold',
-                    width: '100%'
-                  }}
-                  onClick={handleFavoriteToggle}
-                >
-                  {isFavorited ? 'Retirer des favoris' : 'Ajouter aux favoris'}
                 </button>
               </div>
             </div>

@@ -1,13 +1,15 @@
-// src/components/CarItem.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Importation de Framer Motion
+import { motion } from 'framer-motion';
 
-const CarItem = ({ car, addToFavorites, showAddToFavorites }) => {
+const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
 
   const handleAddToFavorites = () => {
     addToFavorites(car);
-    alert(`${car.name} a été ajouté aux favoris !`);
+  };
+
+  const handleRemoveFromFavorites = () => {
+    removeFromFavorites(car);
   };
 
   return (
@@ -32,7 +34,16 @@ const CarItem = ({ car, addToFavorites, showAddToFavorites }) => {
           <p className="card-text">Localisation : {car.location}</p>
         </div>
       </Link>
-      {showAddToFavorites && (
+      {/* Boutons Ajouter aux favoris et Retirer des favoris */}
+      {isFavorite ? (
+        <button
+          onClick={handleRemoveFromFavorites}
+          className="btn btn-outline-warning"
+          style={{ position: 'absolute', bottom: '10px', right: '10px' }}
+        >
+          Retirer des Favoris
+        </button>
+      ) : (
         <button
           onClick={handleAddToFavorites}
           className="btn btn-outline-danger"
