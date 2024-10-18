@@ -58,34 +58,44 @@ const CarDetails = ({ addToFavorites, removeFromFavorites, favorites }) => {
               {car.brand} {car.model}
             </h2>
 
-            <p style={{ fontSize: '1rem', color: '#555' }}><strong>Localisation : </strong>{car.location}</p>
-            <p style={{ fontSize: '1rem', color: '#555' }}><strong>Année : </strong>{car.year}</p>
-            <p style={{ fontSize: '1rem', color: '#555' }}><strong>Kilométrage : </strong>{car.mileage || 'Non spécifié'} km</p>
-            <p style={{ fontSize: '1rem', color: '#555' }}><strong>Énergie : </strong>{car.fuel}</p>
+            <div className="d-flex flex-wrap" style={{ gap: '20px' }}>
+              <p style={{ fontSize: '1rem', color: '#555', marginBottom: '0' }}>
+                <strong>Localisation : </strong>{car.location}
+              </p>
+              <p style={{ fontSize: '1rem', color: '#555', marginBottom: '0' }}>
+                <strong>Année : </strong>{car.year}
+              </p>
+              <p style={{ fontSize: '1rem', color: '#555', marginBottom: '0' }}>
+                <strong>Kilométrage : </strong>{car.mileage || 'Non spécifié'} km
+              </p>
+              <p style={{ fontSize: '1rem', color: '#555', marginBottom: '0' }}>
+                <strong>Énergie : </strong>{car.fuel}
+              </p>
+              <p style={{ fontSize: '1.25rem', color: '#555', marginBottom: '0', fontFamily: '"Lobster", cursive', fontWeight: 'bold' }}>
+                <strong>Prix : </strong>{car.price}€
+              </p>
+            </div><br />
 
-            <p style={{
-              fontSize: '1rem',
-              color: '#000',
-              fontWeight: 'bold',
-              fontFamily: '"Lobster", cursive',
-              margin: '10px 0'
-            }}>
-              Prix : {car.price}€
-            </p><br />
 
-            <p style={{ fontSize: '1rem', color: '#555' }}>06/10/2024 à 17:42</p>
+            <div className="d-flex justify-content-between">
+              {/* Bouton Ajouter aux Favoris */}
+              <button
+                onClick={handleToggleFavorite}
+                className={`btn ${isFavorite ? 'btn-outline-warning' : 'btn-outline-danger'}`}
+                style={{
+                  width: '160px',
+                  cursor: 'pointer',
+                }}
+              >
+                {isFavorite ? 'Retirer des Favoris' : 'Ajouter aux Favoris'}
+              </button>
 
-            {/* Bouton Ajouter aux Favoris */}
-            <button
-              onClick={handleToggleFavorite} // Appelle la fonction pour gérer l'état
-              className={`btn ${isFavorite ? 'btn-outline-warning' : 'btn-outline-danger'}`} // Classe CSS conditionnelle
-              style={{
-                width: '160px', // Ajustement ici, vous pouvez essayer différentes valeurs
-                cursor: 'pointer',
-              }}
-            >
-              {isFavorite ? 'Retirer des Favoris' : 'Ajouter aux Favoris'} {/* Change le texte en fonction de l'état */}
-            </button>
+              {/* Date alignée à l'extrémité droite */}
+              <p style={{ fontSize: '1rem', color: '#555', marginBottom: '0' }}>06/10/2024 à 17:42</p>
+            </div>
+
+
+
 
 
             {/* Bloc du Vendeur avec les boutons */}
@@ -125,7 +135,6 @@ const CarDetails = ({ addToFavorites, removeFromFavorites, favorites }) => {
                     width: '100%',
                     marginBottom: '10px'
                   }}
-                  onClick={() => alert('Vous avez réservé cette voiture !')}
                 >
                   Réserver
                 </button>
@@ -143,7 +152,6 @@ const CarDetails = ({ addToFavorites, removeFromFavorites, favorites }) => {
                     width: '100%',
                     marginBottom: '10px'
                   }}
-                  onClick={() => alert('Envoyez un message au vendeur.')}
                 >
                   Envoyer un message
                 </button>

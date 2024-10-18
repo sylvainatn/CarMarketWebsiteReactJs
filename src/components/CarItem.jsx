@@ -26,12 +26,12 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
         <img src={car.image} className="card-img-top" alt={car.name} />
         <div className="card-body">
           <h5 className="card-title">{car.name}</h5>
-          <h6 className="card-text">Prix : {car.price} €</h6>
-          <p className="card-text">Année : {car.year}</p>
-          <p className="card-text">Kilométrage : {car.mileage} km</p>
-          <p className="card-text">Carburant : {car.fuel}</p>
-          <p className="card-text">Boîte de vitesse : {car.transmission}</p>
-          <p className="card-text">Localisation : {car.location}</p>
+          <h6 style={{ marginBottom: '5px' }}>Prix : {car.price} €</h6>
+          <p style={{ marginBottom: '5px' }}>Année : {car.year}</p>
+          <p style={{ marginBottom: '5px' }}>Kilométrage : {car.mileage} km</p>
+          <p style={{ marginBottom: '5px' }}>Carburant : {car.fuel}</p>
+          <p style={{ marginBottom: '5px' }}>Boîte de vitesse : {car.transmission}</p>
+          <p style={{ marginBottom: '5px' }}>Localisation : {car.location}</p>
         </div>
       </Link>
       {/* Boutons Ajouter aux favoris et Retirer des favoris */}
