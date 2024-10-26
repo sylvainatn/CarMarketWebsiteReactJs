@@ -48,17 +48,16 @@ function App() {
       <Router>
         <ScrollToTop />
         <Header />
-        <br />
         <Routes>
           <Route
             path="/"
             element={
               <div>
-                <Carousel />
-                <CarList 
-                  cars={cars} 
-                  addToFavorites={addToFavorites} 
-                  favorites={favorites} 
+                {/* <Carousel /> */}
+                <CarList
+                  cars={cars}
+                  addToFavorites={addToFavorites}
+                  favorites={favorites}
                   removeFromFavorites={removeFromFavorites} />
               </div>
             }
@@ -67,24 +66,24 @@ function App() {
             path="/acheter"
             element={
               <div>
-                <Carousel />
-                <CarList 
-                  cars={cars} 
-                  addToFavorites={addToFavorites} 
-                  favorites={favorites} 
+                {/* <Carousel /> */}
+                <CarList
+                  cars={cars}
+                  addToFavorites={addToFavorites}
+                  favorites={favorites}
                   removeFromFavorites={removeFromFavorites} />
               </div>
             }
           />
-          <Route 
-            path="/cars/:id" 
+          <Route
+            path="/cars/:id"
             element={
-              <CarDetails 
-                addToFavorites={addToFavorites} 
-                removeFromFavorites={removeFromFavorites} 
+              <CarDetails
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
                 favorites={favorites}
               />
-            } 
+            }
           />
           <Route path="/favorites" element={<Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />} />
           <Route path="/login" element={<LoginPage />} />
