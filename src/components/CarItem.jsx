@@ -23,7 +23,7 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
          whileHover={{ scale: 1.05 }}
       >
          <Link to={`/cars/${car.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <img src={car.image} className="card-img-top" style={{border: '1px solid #000',}} alt={car.name} />
+            <img src={car.image} className="card-img-top" style={{ border: '1px solid #000', }} alt={car.name} />
             <div className="card-body">
                <h5 className="card-title">{car.name}</h5>
                <h6 style={{ marginBottom: '5px' }}>Prix : {car.price} €</h6>
