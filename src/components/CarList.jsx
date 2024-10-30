@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CarItem from './CarItem';
 
 const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
+
    const [searchTerm, setSearchTerm] = useState('');
    const [filter, setFilter] = useState({
       priceMin: '',
@@ -17,6 +18,7 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
       dinPowerMin: '',
       dinPowerMax: '',
    });
+
    const [filteredCars, setFilteredCars] = useState(cars);
    const [errorMessage, setErrorMessage] = useState('');
 
@@ -65,6 +67,7 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
 
    return (
       <div className="container">
+
          <h1 className="text-center my-4">Liste des Voitures</h1>
 
          {/* Barre de recherche */}
@@ -81,14 +84,19 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   padding: '10px 15px',
                   fontSize: '16px',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-                  width: '50%',
+                  width: '60%',
                }}
             />
          </div>
 
+         {/* Bouton de recherche */}
+         <div className="d-flex justify-content-center mb-4">
+            <button onClick={handleSearch} className="btn btn-primary">Rechercher</button>
+         </div>
+
          {/* Filtres avancés encapsulés dans une boîte */}
          <div className="filter-box p-3 mb-4">
-            <div className="d-flex justify-content-center flex-wrap border p-2" style={{ gap: '20px' }}>
+            <div className="d-flex justify-content-center flex-wrap p-2" style={{ gap: '20px' }}>
                {/* Prix */}
                <div className='d-flex flex-column border rounded'>
                   <div className="p-2">
@@ -227,11 +235,6 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
 
          {/* Message d'erreur */}
          {errorMessage && <div className="alert alert-danger text-center">{errorMessage}</div>}
-
-         {/* Bouton de recherche */}
-         <div className="d-flex justify-content-center mb-4">
-            <button onClick={handleSearch} className="btn btn-primary">Rechercher</button>
-         </div>
 
          {/* Affichage des voitures filtrées */}
          <div className="row">

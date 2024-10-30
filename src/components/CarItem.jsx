@@ -19,7 +19,7 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
          style={{
             margin: '10px',
             cursor: 'pointer',
-            width: '250px', // Ajustement de la largeur pour rendre la carte plus compacte
+            width: '250px',
             position: 'relative'
          }}
          initial={{ opacity: 0, y: 20 }}
@@ -34,11 +34,12 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
                className="card-img-top"
                style={{
                   border: '1px solid #000',
-                  height: '150px', // Hauteur ajustée pour une image plus petite
+                  height: '150px',
                   objectFit: 'cover'
                }}
                alt={car.name}
             />
+
             <div className="card-body" style={{ padding: '10px' }}>
                <h5 className="card-title" style={{ fontSize: '1rem', color: '#fff' }}>{car.name}</h5>
                <h4 style={{ marginBottom: '5px', color: 'green', fontSize: '1rem' }}>
@@ -65,6 +66,7 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
                </div>
             </div>
          </Link>
+
          {isFavorite ? (
             <button
                onClick={handleRemoveFromFavorites}
