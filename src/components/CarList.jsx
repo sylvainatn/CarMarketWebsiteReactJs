@@ -222,7 +222,7 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
          <div className="row">
             {filteredCars.length > 0 ? (
                filteredCars.map((car) => (
-                  <div key={car.id} style={{ marginBottom: '20px' }} className="col-md-4 d-flex">
+                  <div key={car.id} style={{ marginBottom: '20px' }} className="col-md-3 d-flex justify-content-center">
                      <CarItem
                         car={car}
                         addToFavorites={addToFavorites}
