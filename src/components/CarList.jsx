@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CarItem from './CarItem';
 
 const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
-
    const [searchTerm, setSearchTerm] = useState('');
    const [filter, setFilter] = useState({
       priceMin: '',
@@ -13,11 +12,31 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
       mileageMin: '',
       mileageMax: '',
       transmission: '',
+      fiscalPowerMin: '',
+      fiscalPowerMax: '',
+      dinPowerMin: '',
+      dinPowerMax: '',
    });
    const [filteredCars, setFilteredCars] = useState(cars);
+   const [errorMessage, setErrorMessage] = useState('');
 
-   // Fonction pour filtrer les voitures lorsque l'utilisateur clique sur le bouton
+   // Fonction pour filtrer les voitures
    const handleSearch = () => {
+      // Reset error message
+      setErrorMessage('');
+
+      // Vérifier les valeurs des filtres
+      if (
+         (filter.priceMin && filter.priceMax && Number(filter.priceMin) > Number(filter.priceMax)) ||
+         (filter.yearMin && filter.yearMax && Number(filter.yearMin) > Number(filter.yearMax)) ||
+         (filter.mileageMin && filter.mileageMax && Number(filter.mileageMin) > Number(filter.mileageMax)) ||
+         (filter.fiscalPowerMin && filter.fiscalPowerMax && Number(filter.fiscalPowerMin) > Number(filter.fiscalPowerMax)) ||
+         (filter.dinPowerMin && filter.dinPowerMax && Number(filter.dinPowerMin) > Number(filter.dinPowerMax))
+      ) {
+         setErrorMessage('Les valeurs minimales doivent être inférieures aux valeurs maximales.');
+         return;
+      }
+
       const newFilteredCars = cars.filter((car) => {
          const matchesSearch =
             (car.name && car.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -25,13 +44,18 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
             (car.location && car.location.toLowerCase().includes(searchTerm.toLowerCase()));
 
          const matchesFilters =
-            (!filter.priceMin || car.price >= filter.priceMin) &&
-            (!filter.priceMax || car.price <= filter.priceMax) &&
-            (!filter.year || car.year >= filter.year) &&
+            (!filter.priceMin || car.price >= Number(filter.priceMin)) &&
+            (!filter.priceMax || car.price <= Number(filter.priceMax)) &&
+            (!filter.yearMin || car.year >= Number(filter.yearMin)) &&
+            (!filter.yearMax || car.year <= Number(filter.yearMax)) &&
             (!filter.fuel || car.fuel.toLowerCase() === filter.fuel.toLowerCase()) &&
-            (!filter.mileageMin || car.mileage >= filter.mileageMin) &&
-            (!filter.mileageMax || car.mileage <= filter.mileageMax) &&
-            (!filter.transmission || car.transmission.toLowerCase() === filter.transmission.toLowerCase());
+            (!filter.mileageMin || car.mileage >= Number(filter.mileageMin)) &&
+            (!filter.mileageMax || car.mileage <= Number(filter.mileageMax)) &&
+            (!filter.transmission || car.transmission.toLowerCase() === filter.transmission.toLowerCase()) &&
+            (!filter.fiscalPowerMin || car.fiscalPower >= Number(filter.fiscalPowerMin)) &&
+            (!filter.fiscalPowerMax || car.fiscalPower <= Number(filter.fiscalPowerMax)) &&
+            (!filter.dinPowerMin || car.dinPower >= Number(filter.dinPowerMin)) &&
+            (!filter.dinPowerMax || car.dinPower <= Number(filter.dinPowerMax));
 
          return matchesSearch && matchesFilters;
       });
@@ -65,10 +89,8 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
          {/* Filtres avancés encapsulés dans une boîte */}
          <div className="filter-box p-3 mb-4">
             <div className="d-flex justify-content-center flex-wrap border p-2" style={{ gap: '20px' }}>
-
-               <div className='d-flex flex-column border rounded' style={{ gap: '1px' }}>
-                  {/* <label className='bg-warning rounded-top p-2' htmlFor="">Prix</label> */}
-
+               {/* Prix */}
+               <div className='d-flex flex-column border rounded'>
                   <div className="p-2">
                      <input
                         type="number"
@@ -76,7 +98,7 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                         className="form-control mb-2"
                         value={filter.priceMin}
                         onChange={(e) => setFilter({ ...filter, priceMin: e.target.value })}
-                        style={{ maxWidth: '120px', }}
+                        style={{ maxWidth: '120px' }}
                      />
                      <input
                         type="number"
@@ -89,9 +111,8 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   </div>
                </div>
 
-               <div className='d-flex flex-column border rounded' >
-                  {/* <label className='bg-warning rounded-top p-2' htmlFor="">Année</label> */}
-
+               {/* Année */}
+               <div className='d-flex flex-column border rounded'>
                   <div className="p-2">
                      <input
                         type="number"
@@ -101,7 +122,6 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                         onChange={(e) => setFilter({ ...filter, yearMin: e.target.value })}
                         style={{ maxWidth: '120px' }}
                      />
-
                      <input
                         type="number"
                         placeholder="Année max"
@@ -113,16 +133,13 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   </div>
                </div>
 
-
-               <div className='d-flex flex-column border rounded '>
-                  {/* <label className='bg-warning rounded-top p-2' htmlFor="">Carburant et Transmission</label> */}
-
+               {/* Carburant et Transmission */}
+               <div className='d-flex flex-column border rounded'>
                   <div className='p-2'>
                      <select
                         className="form-control mb-2"
                         value={filter.fuel}
                         onChange={(e) => setFilter({ ...filter, fuel: e.target.value })}
-                     // style={{ width: '100%' }}
                      >
                         <option value="">Carburant</option>
                         <option value="Essence">Essence</option>
@@ -142,9 +159,8 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   </div>
                </div>
 
-
-               <div className='d-flex flex-column border rounded' >
-                  {/* <label className='bg-warning rounded-top p-2' htmlFor="">Kilométrage</label> */}
+               {/* Kilométrage */}
+               <div className='d-flex flex-column border rounded'>
                   <div className="p-2">
                      <input
                         type="number"
@@ -163,9 +179,8 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   </div>
                </div>
 
-
-               <div className='d-flex flex-column border rounded' >
-                  {/* <label className='bg-warning rounded-top p-2' htmlFor="">Performance</label> */}
+               {/* Puissance fiscale */}
+               <div className='d-flex flex-column border rounded'>
                   <div className="p-2">
                      <input
                         type="number"
@@ -175,7 +190,6 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                         onChange={(e) => setFilter({ ...filter, fiscalPowerMin: e.target.value })}
                         style={{ maxWidth: '190px' }}
                      />
-
                      <input
                         type="number"
                         placeholder="Puissance fiscale max"
@@ -187,9 +201,8 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   </div>
                </div>
 
+               {/* Puissance DIN */}
                <div className='d-flex flex-column border rounded'>
-                  {/* <label className='bg-warning rounded-top p-2' htmlFor="">Prix</label> */}
-
                   <div className="p-2">
                      <input
                         type="number"
@@ -199,7 +212,6 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                         onChange={(e) => setFilter({ ...filter, dinPowerMin: e.target.value })}
                         style={{ maxWidth: '175px' }}
                      />
-
                      <input
                         type="number"
                         placeholder="Puissance DIN max"
@@ -212,6 +224,9 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                </div>
             </div>
          </div>
+
+         {/* Message d'erreur */}
+         {errorMessage && <div className="alert alert-danger text-center">{errorMessage}</div>}
 
          {/* Bouton de recherche */}
          <div className="d-flex justify-content-center mb-4">

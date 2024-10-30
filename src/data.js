@@ -30,7 +30,7 @@ export const cars = [
   },
   {
     id: 2,
-    name: 'Peugeot',
+    name: 'BMW',
     year: 2019,
     mileage: 150000,
     fuel: 'Essence',
@@ -59,7 +59,7 @@ export const cars = [
   },
   {
     id: 3,
-    name: 'Volkswagen',
+    name: 'Renault',
     year: 2020,
     mileage: 150000,
     fuel: 'Essence',
@@ -88,7 +88,7 @@ export const cars = [
   },
   {
     id: 4,
-    name: 'Volkswagen',
+    name: 'Peugeot',
     year: 2020,
     mileage: 150000,
     fuel: 'Essence',
@@ -117,7 +117,7 @@ export const cars = [
   },
   {
     id: 5,
-    name: 'Volkswagen',
+    name: 'Mercedes',
     year: 2020,
     mileage: 150000,
     fuel: 'Essence',
@@ -175,7 +175,7 @@ export const cars = [
   },
   {
     id: 7,
-    name: 'Volkswagen',
+    name: 'Peugeot',
     year: 2020,
     mileage: 150000,
     fuel: 'Essence',
@@ -204,7 +204,7 @@ export const cars = [
   },
   {
     id: 8,
-    name: 'Volkswagen',
+    name: 'Opel',
     year: 2020,
     mileage: 150000,
     fuel: 'Essence',
