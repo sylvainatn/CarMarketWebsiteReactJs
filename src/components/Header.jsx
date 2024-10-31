@@ -1,73 +1,68 @@
-// src/components/Header.jsx
 import { NavLink } from 'react-router-dom';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { FaCar } from 'react-icons/fa'; // Import de l'icône de voiture
 
 const Header = () => {
    return (
-      <div className='bg-dark'>
-         <div className="container">
-            <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-               <div className="col-md-3 mb-2 mb-md-0">
-                  <NavLink
-                     to="/"
-                     className="d-inline-flex  text-decoration-none h1"
-                     style={{ color: '#fff', fontFamily: 'Roboto', fontWeight: 'bold' }}
-                  >
-                     CarMarket
-                  </NavLink>
-               </div>
+      <header>
+         <Navbar bg="dark" expand="md" variant="dark" className="py-3">
+            <Container>
 
-               <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                  <li>
+               {/* Titre du site avec le logo de voiture */}
+               <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center">
+                  <span style={{ fontFamily: 'Roboto', fontWeight: 'bold', fontSize: '1.6rem', color: '#fff' }}>
+                     CarMarket
+                  </span>
+                  <FaCar style={{ color: '#fff', fontSize: '2rem', marginLeft: '8px' }} />
+               </Navbar.Brand>
+
+               {/* Bouton de bascule pour les petits écrans */}
+               <Navbar.Toggle aria-controls="navbarResponsive" />
+
+               {/* Navigation principale */}
+               <Navbar.Collapse id="navbarResponsive">
+                  <Nav className="ms-auto">
                      <NavLink
                         to="/acheter"
-                        className={({ isActive }) => isActive ? 'nav-link px-2 link-secondary' : 'nav-link px-2'}
-                        style={{ color: '#fff', fontSize: '1.3rem' }}
+                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Acheter
                      </NavLink>
-                  </li>
-                  <li>
                      <NavLink
                         to="/vendre"
-                        className={({ isActive }) => isActive ? 'nav-link px-2 link-secondary' : 'nav-link px-2'}
-                        style={{ color: '#fff', fontSize: '1.3rem' }}
+                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Vendre
                      </NavLink>
-                  </li>
-                  <li>
                      <NavLink
                         to="/favorites"
-                        className={({ isActive }) => isActive ? 'nav-link px-2 link-secondary' : 'nav-link px-2'}
-                        style={{ color: '#fff', fontSize: '1.3rem' }}
+                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Favoris
                      </NavLink>
-                  </li>
-                  <li>
                      <NavLink
+                        // as={NavLink}
                         to="/services"
-                        className={({ isActive }) => isActive ? 'nav-link px-2 link-secondary' : 'nav-link px-2'}
-                        style={{ color: '#fff', fontSize: '1.3rem' }}
+                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Services
                      </NavLink>
-                  </li>
-               </ul>
+                  </Nav>
 
-               <div className="col-md-3 text-end">
-                  <NavLink
-                     to="/login"
-                  >
-                     <button type="button" className="btn btn-outline-danger me-2">Se Connecter</button>
-                  </NavLink>
-
-               </div>
-            </header>
-         </div>
-
-      </div>
-
+                  {/* Bouton de connexion aligné à droite */}
+                  <div className="text-end">
+                     <NavLink to="/login">
+                        <Button variant="outline-danger" style={{ margin: '0px 10px' }}>Se Connecter</Button>
+                     </NavLink>
+                  </div>
+               </Navbar.Collapse>
+            </Container>
+         </Navbar>
+      </header>
    );
 };
 

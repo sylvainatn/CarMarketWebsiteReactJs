@@ -42,7 +42,7 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
 
             <div className="card-body" style={{ padding: '10px' }}>
                <h5 className="card-title" style={{ fontSize: '1rem', color: '#fff' }}>{car.name}</h5>
-               <h4 style={{ marginBottom: '5px', color: 'green', fontSize: '1rem' }}>
+               <h4 style={{ marginBottom: '5px', color: '#fff', fontSize: '1.2rem' }}>
                   <FaTag style={{ marginRight: '5px' }} /> Prix : {car.price} €
                </h4>
 
@@ -71,7 +71,7 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
             <button
                onClick={handleRemoveFromFavorites}
                className="btn btn-outline-warning"
-               style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.7rem', padding: '6px 6px' }}
+               style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.65rem', padding: '5px 5px' }}
             >
                Retirer des Favoris
             </button>
@@ -79,7 +79,7 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
             <button
                onClick={handleAddToFavorites}
                className="btn btn-outline-danger"
-               style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.7rem', padding: '6px 6px' }}
+               style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.65rem', padding: '5px 5px' }}
             >
                Ajouter aux Favoris
             </button>
