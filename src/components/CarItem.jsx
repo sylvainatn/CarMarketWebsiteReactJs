@@ -20,7 +20,8 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
             margin: '10px',
             cursor: 'pointer',
             width: '250px',
-            position: 'relative'
+            position: 'relative',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)', // Ajout de l'ombre
          }}
          initial={{ opacity: 0, y: 20 }}
          animate={{ opacity: 1, y: 0 }}
