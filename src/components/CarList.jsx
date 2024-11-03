@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CarItem from './CarItem';
 
 const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
+
 
    const [searchTerm, setSearchTerm] = useState('');
 
@@ -23,12 +24,13 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
    const [filteredCars, setFilteredCars] = useState(cars);
    const [errorMessage, setErrorMessage] = useState('');
 
-   // Fonction pour filtrer les voitures
-   const handleSearch = () => {
-      // Reset error message
+   // Fonction de filtrage
+   const filterCars = () => {
+
+      // Réinitialiser le message d'erreur
       setErrorMessage('');
 
-      // Vérifier les valeurs des filtres
+      // Vérifier les valeurs des filtres avancés
       if (
          (filter.priceMin && filter.priceMax && Number(filter.priceMin) > Number(filter.priceMax)) ||
          (filter.yearMin && filter.yearMax && Number(filter.yearMin) > Number(filter.yearMax)) ||
@@ -42,11 +44,13 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
 
       const newFilteredCars = cars.filter((car) => {
 
+         // Filtrage par mot-clé
          const matchesSearch =
             (car.name && car.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
             (car.brand && car.brand.toLowerCase().includes(searchTerm.toLowerCase())) ||
             (car.location && car.location.toLowerCase().includes(searchTerm.toLowerCase()));
 
+         // Filtrage par filtres avancés
          const matchesFilters =
             (!filter.priceMin || car.price >= Number(filter.priceMin)) &&
             (!filter.priceMax || car.price <= Number(filter.priceMax)) &&
@@ -67,10 +71,16 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
       setFilteredCars(newFilteredCars);
    };
 
+   // Déclenche la recherche automatique lorsqu'on tape dans la barre de recherche
+   useEffect(() => {
+      filterCars();
+   }, [searchTerm]); // Lance la recherche automatique à chaque modification de searchTerm
+
+
+
    return (
       <div className="container">
 
-         <h1 className="text-center my-4">Liste des Voitures</h1>
 
          {/* Barre de recherche */}
          <div className="mb-4 d-flex justify-content-center">
@@ -91,10 +101,7 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
             />
          </div>
 
-         {/* Bouton de recherche */}
-         <div className="d-flex justify-content-center mb-4">
-            <button onClick={handleSearch} className="btn btn-primary">Rechercher</button>
-         </div>
+
 
          {/* Filtres avancés encapsulés dans une boîte */}
          <div className="filter-box border bg-dark rounded-pill mb-4">
@@ -234,7 +241,12 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                      />
                   </div>
                </div>
+               {/* Bouton de recherche */}
+               <div className="d-flex justify-content-center mb-4">
+                  <button onClick={filterCars} className="btn btn-primary">Appliquer</button>
+               </div>
             </div>
+
          </div>
 
          {/* Message d'erreur */}
@@ -254,7 +266,7 @@ const CarList = ({ cars, addToFavorites, favorites, removeFromFavorites }) => {
                   </div>
                ))
             ) : (
-               <div className=" alert alert-danger text-center">
+               <div className="col-12 text-center">
                   <p>Aucune voiture ne correspond à votre recherche.</p>
                </div>
             )}

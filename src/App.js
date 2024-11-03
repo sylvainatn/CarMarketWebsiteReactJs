@@ -9,6 +9,7 @@ import Favorites from './components/Favorites';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 import SellPage from './components/SellPage';
+import HomePage from './components/HomePage';
 import { cars as initialCars } from './data';
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
             element={
               <div>
                 {/* <Carousel /> */}
+                <HomePage />
                 <CarList
                   cars={cars}
                   addToFavorites={addToFavorites}
