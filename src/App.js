@@ -54,7 +54,7 @@ function App() {
             path="/"
             element={
               <div>
-                {/* <Carousel /> */}
+                <HomePage />
                 <CarList
                   cars={cars}
                   addToFavorites={addToFavorites}

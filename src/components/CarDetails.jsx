@@ -82,7 +82,8 @@ const CarDetails = ({ addToFavorites, removeFromFavorites, favorites }) => {
                         onClick={handleToggleFavorite}
                         className={`btn ${isFavorite ? 'btn-outline-warning' : 'btn-outline-danger'}`}
                         style={{
-                           width: '160px',
+                           padding: '5px 5px',
+                           fontSize: '0.65rem',
                            cursor: 'pointer',
                         }}
                      >
