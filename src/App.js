@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import CarList from './components/CarList';
-import Carousel from './components/Carousel';
 import CarDetails from './components/CarDetails';
 import Footer from './components/Footer';
 import Favorites from './components/Favorites';
@@ -10,6 +8,7 @@ import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 import SellPage from './components/SellPage';
 import HomePage from './components/HomePage';
+import CarContainer from './components/CarContainer';
 import { cars as initialCars } from './data';
 
 function App() {
@@ -55,11 +54,13 @@ function App() {
             element={
               <div>
                 <HomePage />
-                <CarList
+                <CarContainer
                   cars={cars}
                   addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
                   favorites={favorites}
-                  removeFromFavorites={removeFromFavorites} />
+                />
+
               </div>
             }
           />
@@ -69,11 +70,13 @@ function App() {
               <div>
                 {/* <Carousel /> */}
                 <HomePage />
-                <CarList
+                <CarContainer
                   cars={cars}
                   addToFavorites={addToFavorites}
+                  removeFromFavorites={removeFromFavorites}
                   favorites={favorites}
-                  removeFromFavorites={removeFromFavorites} />
+                />
+
               </div>
             }
           />
