@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 
+
+
+const initialFilter = {
+   priceMin: '',
+   priceMax: '',
+   yearMin: '',
+   yearMax: '',
+   fuel: '',
+   mileageMin: '',
+   mileageMax: '',
+   transmission: '',
+   fiscalPowerMin: '',
+   fiscalPowerMax: '',
+   dinPowerMin: '',
+   dinPowerMax: '',
+};
+
 const CarFilter = ({ onFilterChange }) => {
-
    const [searchTerm, setSearchTerm] = useState('');
-
-   const [filter, setFilter] = useState({
-      priceMin: '',
-      priceMax: '',
-      yearMin: '',
-      yearMax: '',
-      fuel: '',
-      mileageMin: '',
-      mileageMax: '',
-      transmission: '',
-      fiscalPowerMin: '',
-      fiscalPowerMax: '',
-      dinPowerMin: '',
-      dinPowerMax: '',
-   });
+   const [filter, setFilter] = useState(initialFilter);
 
    const handleInputChange = (e) => {
       const { name, value } = e.target;
@@ -27,13 +29,18 @@ const CarFilter = ({ onFilterChange }) => {
    const handleSearchChange = (e) => {
       const value = e.target.value;
       setSearchTerm(value);
-      onFilterChange({ ...filter, searchTerm: value }); // Met à jour le filtre avec le terme de recherche
+      onFilterChange({ ...filter, searchTerm: value });
    };
 
    const handleApplyFilters = () => {
       onFilterChange({ ...filter, searchTerm });
    };
 
+   const handleClearFilters = () => {
+      setFilter(initialFilter);
+      setSearchTerm('');
+      onFilterChange({ ...initialFilter, searchTerm: '' });
+   };
 
 
    // Affichage
@@ -58,9 +65,21 @@ const CarFilter = ({ onFilterChange }) => {
             />
          </div>
 
+
+
+
+
          {/* Filtres avancés encapsulés dans une boîte */}
-         <div className="filter-box border rounded-pill mb-4">
+         <div className="filter-box  rounded-pill mb-4">
+
+
+            <div className="d-flex align-items-center justify-content-center">
+               <i className="fas fa-filter" style={{ marginRight: '8px', fontSize: '20px', color: '#007bff' }}></i>
+               <h3 style={{ fontSize: '20px', fontWeight: 'bold' }}>Filtres</h3>
+            </div>
+
             <div className="d-flex justify-content-center flex-wrap p-2" style={{ gap: '20px' }}>
+
 
                {/* Prix */}
                <div className='d-flex flex-column border rounded'>
@@ -212,9 +231,15 @@ const CarFilter = ({ onFilterChange }) => {
                   </div>
                </div>
 
-               {/* Bouton de recherche */}
-               <div className="d-flex justify-content-center mb-4">
-                  <button onClick={handleApplyFilters} className="btn btn-primary">Appliquer</button>
+               {/* Boutons Appliquer et Effacer */}
+               <div className="d-flex flex-column align-items-center" style={{ minWidth: '100px' }}>
+                  <button onClick={handleClearFilters} className="btn btn-warning mb-3" style={{ width: '100%', fontSize: '13px' }}>
+                     Effacer
+                  </button>
+                  <button onClick={handleApplyFilters} className="btn btn-primary " style={{ width: '100%', fontSize: '13px' }}>
+                     Appliquer
+                  </button>
+
                </div>
             </div>
          </div>
@@ -223,3 +248,5 @@ const CarFilter = ({ onFilterChange }) => {
 };
 
 export default CarFilter;
+
+

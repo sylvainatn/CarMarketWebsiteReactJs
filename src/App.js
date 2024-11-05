@@ -14,6 +14,7 @@ import { cars as initialCars } from './data';
 function App() {
 
   const [cars, setCars] = useState(initialCars);
+
   const [favorites, setFavorites] = useState([]);
 
   const addCar = (newCar) => {
