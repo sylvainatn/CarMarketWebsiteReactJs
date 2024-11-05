@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-
-
 const initialFilter = {
    priceMin: '',
    priceMax: '',
@@ -18,7 +16,9 @@ const initialFilter = {
 };
 
 const CarFilter = ({ onFilterChange }) => {
+
    const [searchTerm, setSearchTerm] = useState('');
+
    const [filter, setFilter] = useState(initialFilter);
 
    const handleInputChange = (e) => {
@@ -64,10 +64,6 @@ const CarFilter = ({ onFilterChange }) => {
                }}
             />
          </div>
-
-
-
-
 
          {/* Filtres avancés encapsulés dans une boîte */}
          <div className="filter-box  rounded-pill mb-4">
