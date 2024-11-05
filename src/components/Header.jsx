@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { FaCar } from 'react-icons/fa'; // Import de l'icône de voiture
+import { FaCar } from 'react-icons/fa';
 
 const Header = () => {
    return (
@@ -24,29 +24,32 @@ const Header = () => {
                   <Nav className="ms-auto">
                      <NavLink
                         to="/acheter"
-                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        className={({ isActive }) =>
+                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                         style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Acheter
                      </NavLink>
                      <NavLink
                         to="/vendre"
-                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        className={({ isActive }) =>
+                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                         style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Vendre
                      </NavLink>
                      <NavLink
                         to="/favorites"
-                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        className={({ isActive }) =>
+                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                         style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Favoris
                      </NavLink>
                      <NavLink
-                        // as={NavLink}
                         to="/services"
-                        className={({ isActive }) => (isActive ? 'active nav-link px-2 link-secondary' : 'nav-link px-2')}
+                        className={({ isActive }) =>
+                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                         style={{ color: '#fff', fontSize: '1.3rem', margin: '0 10px' }}
                      >
                         Services

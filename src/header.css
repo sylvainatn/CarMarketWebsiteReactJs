@@ -1,0 +1,37 @@
+/* Style de base des liens de navigation */
+.nav-link {
+   position: relative;
+   color: #fff;
+   text-decoration: none;
+   padding: 5px 0;
+   font-size: 1.3rem;
+   transition: color 0.3s ease;
+}
+
+/* Surlignage pour le lien actif et au survol */
+.nav-link::after {
+   content: "";
+   position: absolute;
+   left: 0;
+   bottom: -3px;
+   width: 0;
+   height: 2px;
+   background-color: #ff4742;
+   transition: width 0.3s ease;
+   opacity: 0;
+   /* Masquer la ligne par défaut */
+}
+
+/* Animation au survol */
+.nav-link:hover::after {
+   width: 100%;
+   opacity: 1;
+}
+
+/* Ligne de surlignage persistante pour le lien actif */
+.active-link::after {
+   width: 100%;
+   opacity: 1;
+   transition: width 0.3s ease;
+   /* Animation douce */
+}
