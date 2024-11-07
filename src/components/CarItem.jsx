@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaCalendarAlt, FaTachometerAlt, FaGasPump, FaCogs, FaTag } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaCalendarAlt, FaTachometerAlt, FaGasPump, FaCogs, FaTag, FaHeart } from 'react-icons/fa';
 
 const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
 
-   const handleAddToFavorites = () => {
-      addToFavorites(car);
-   };
-
-   const handleRemoveFromFavorites = () => {
-      removeFromFavorites(car);
+   const handleFavoriteToggle = () => {
+      if (isFavorite) {
+         removeFromFavorites(car);
+      } else {
+         addToFavorites(car);
+      }
    };
 
    return (
@@ -68,23 +68,22 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
             </div>
          </Link>
 
-         {isFavorite ? (
-            <button
-               onClick={handleRemoveFromFavorites}
-               className="btn btn-outline-warning"
-               style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.65rem', padding: '5px 5px' }}
-            >
-               Retirer des Favoris
-            </button>
-         ) : (
-            <button
-               onClick={handleAddToFavorites}
-               className="btn btn-outline-danger"
-               style={{ position: 'absolute', bottom: '10px', right: '10px', fontSize: '0.65rem', padding: '5px 5px' }}
-            >
-               Ajouter aux Favoris
-            </button>
-         )}
+         {/* Icône de cœur pour gérer les favoris */}
+         <FaHeart
+            onClick={handleFavoriteToggle}
+            style={{
+               position: 'absolute',
+               width: '30px',
+               bottom: '10px',
+               right: '10px',
+               fontSize: '1.5rem',
+               color: isFavorite ? 'red' : 'white',
+               cursor: 'pointer',
+               border: '1px solid #ccc', // Bord gris autour de l'icône
+               borderRadius: '5px',
+               padding: '3px', // Espace autour de l'icône
+            }}
+         />
       </motion.div>
    );
 };

@@ -3,12 +3,6 @@ import CarItem from './CarItem';
 
 const CarList = ({ cars, addToFavorites, removeFromFavorites, favorites }) => {
 
-
-
-
-
-
-
    // Affichage
    return (
       <div className="row" style={{ backgroundColor: '#f8f9fa' }}>
