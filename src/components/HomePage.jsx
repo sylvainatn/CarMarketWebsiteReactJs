@@ -7,15 +7,19 @@ const HomePage = () => {
       <div>
          {/* Hero Section */}
          <section className="hero-section" style={styles.heroSection}>
-            <h1>Bienvenue sur CarMarket</h1>
-            <p>Trouvez votre prochaine voiture parmi notre sélection de véhicules de qualité.</p>
+            <h1 style={styles.typewriter}>Bienvenue sur CarMarket</h1>
+            <p>
+               Découvrez la plateforme idéale pour trouver votre prochaine voiture parmi une vaste sélection de véhicules de qualité, soigneusement vérifiés pour répondre à tous les besoins et budgets.
+               <br />
+               Que vous soyez à la recherche d'une citadine économique, d'un SUV spacieux ou d'une voiture électrique innovante, nous avons ce qu'il vous faut.
+               <br />
+               Notre priorité est de vous offrir une expérience de recherche fluide, avec des outils de filtres avancés pour affiner vos critères et vous rapprocher rapidement de votre choix idéal.
+               <br />
+               Chez CarMarket, chaque véhicule est inspecté et approuvé pour sa fiabilité, sa sécurité et son prix compétitif.
+               <br />
+               <b>CarMarket :</b> un choix fiable pour des véhicules d'exception !
+            </p>
          </section>
-
-
-
-
-
-
       </div>
    );
 };
@@ -27,8 +31,9 @@ const styles = {
       textAlign: 'center',
       backgroundColor: '#f8f9fa',
       color: '#333',
-      marginBottom: '20px'
+      marginBottom: '20px',
    },
+
 };
 
 export default HomePage;

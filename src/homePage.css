@@ -1,0 +1,50 @@
+/* Animation typing (machine à écrire) */
+@keyframes typing {
+   from {
+      width: 0;
+   }
+
+   to {
+      width: 100%;
+   }
+}
+
+/* Animation du clignotement du curseur */
+@keyframes blinkCaret {
+
+   0%,
+   100% {
+      border-color: transparent;
+   }
+
+   50% {
+      border-color: #333;
+   }
+}
+
+/* Classe pour l'effet machine à écrire */
+.typewriter {
+   display: inline-block;
+   font-size: 2em;
+   white-space: nowrap;
+   overflow: hidden;
+   border-right: 3px solid #333;
+   max-width: 100%;
+   animation: typing 3s steps(30, end) forwards, blinkCaret 0.7s step-end infinite;
+}
+
+/* Animation de disparition du curseur après la fin de l'écriture */
+@keyframes typingEnd {
+   from {
+      border-right: 3px solid #333;
+   }
+
+   to {
+      border-right: none;
+   }
+}
+
+/* Applique l'animation de disparition du curseur après que l'animation soit terminée */
+.typewriter.end {
+   animation: typing 3s steps(30, end) forwards, blinkCaret 0.7s step-end 3s infinite, typingEnd 0.5s forwards 3s;
+}

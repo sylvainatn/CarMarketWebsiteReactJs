@@ -35,3 +35,48 @@
    transition: width 0.3s ease;
    /* Animation douce */
 }
+
+/* Fixer le header en haut de la page */
+.sticky-header {
+   position: sticky;
+   top: 0;
+   z-index: 1000;
+   /* Assurer que le header est au-dessus du contenu */
+   background-color: #343a40;
+   /* Couleur du fond du header */
+   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+   /* Ombre légère pour donner du relief */
+   width: 100%;
+}
+
+/* Style pour le texte du site */
+.sticky-header .navbar-brand {
+   font-family: 'Roboto', sans-serif;
+   font-weight: bold;
+   font-size: 1.6rem;
+   color: #fff;
+}
+
+.sticky-header .navbar-brand .car-icon {
+   color: #fff;
+   font-size: 2rem;
+   margin-left: 8px;
+}
+
+/* Style des liens de navigation */
+.sticky-header .nav-link {
+   color: #fff;
+   font-size: 1.3rem;
+   margin: 0 10px;
+}
+
+/* Style des liens actifs */
+.sticky-header .nav-link.active-link {
+   color: #ffffff;
+   /* Couleur du lien actif (par exemple jaune/orange) */
+}
+
+/* Style du bouton de connexion */
+.sticky-header .text-end .btn {
+   margin: 0px 10px;
+}

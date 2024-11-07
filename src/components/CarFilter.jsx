@@ -69,8 +69,8 @@ const CarFilter = ({ onFilterChange }) => {
          <div className="filter-box  rounded-pill mb-4">
 
 
-            <div className="d-flex align-items-center justify-content-center">
-               <i className="fas fa-filter" style={{ marginRight: '8px', fontSize: '20px', color: '#007bff' }}></i>
+            <div className="d-flex" style={{ paddingLeft: "9rem" }}>
+               <svg data-name="Layer 1" style={{ margin: '0px 8px 8px', width: '20px' }} id="Layer_1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><title /><path d="M47,12a2,2,0,0,0-2-2H24a2,2,0,0,0,0,4H45A2,2,0,0,0,47,12Z" /><path d="M3,14H8.35a6,6,0,1,0,0-4H3a2,2,0,0,0,0,4Zm11-4a2,2,0,1,1-2,2A2,2,0,0,1,14,10Z" /><path d="M45,22H37.65a6,6,0,1,0,0,4H45a2,2,0,0,0,0-4ZM32,26a2,2,0,1,1,2-2A2,2,0,0,1,32,26Z" /><path d="M22,22H3a2,2,0,0,0,0,4H22a2,2,0,0,0,0-4Z" /><path d="M45,34H28a2,2,0,0,0,0,4H45a2,2,0,0,0,0-4Z" /><path d="M18,30a6,6,0,0,0-5.65,4H3a2,2,0,0,0,0,4h9.35A6,6,0,1,0,18,30Zm0,8a2,2,0,1,1,2-2A2,2,0,0,1,18,38Z" /></svg>
                <h3 style={{ fontSize: '20px', fontWeight: 'bold' }}>Filtres</h3>
             </div>
 
@@ -228,7 +228,7 @@ const CarFilter = ({ onFilterChange }) => {
                </div>
 
                {/* Boutons Appliquer et Effacer */}
-               <div className="d-flex flex-column align-items-center" style={{ minWidth: '100px' }}>
+               <div className="d-flex flex-column align-items-center" style={{ minWidth: '80px' }}>
                   <button onClick={handleClearFilters} className="btn btn-warning mb-3" style={{ width: '100%', fontSize: '13px' }}>
                      Effacer
                   </button>
@@ -244,5 +244,4 @@ const CarFilter = ({ onFilterChange }) => {
 };
 
 export default CarFilter;
-
 
