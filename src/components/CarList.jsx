@@ -11,7 +11,7 @@ const CarList = ({ cars, addToFavorites, removeFromFavorites, favorites }) => {
 
    // Affichage
    return (
-      <div className="row">
+      <div className="row" style={{ backgroundColor: '#f8f9fa' }}>
          {cars.length > 0 ? (
             cars.map((car) => (
                <div key={car.id} className="col-md-3 d-flex justify-content-center" style={{ marginBottom: '20px' }}>

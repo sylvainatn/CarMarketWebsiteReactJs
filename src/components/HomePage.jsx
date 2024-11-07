@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaCarSide } from 'react-icons/fa';
+
 
 const HomePage = () => {
    return (

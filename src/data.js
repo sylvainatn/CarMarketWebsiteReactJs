@@ -1,7 +1,7 @@
 export const cars = [
    {
       id: 1,
-      name: 'Renault',
+      name: 'Citroen C3',
       year: 2018,
       mileage: 150000,
       fuel: 'Essence',
