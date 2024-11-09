@@ -5,7 +5,7 @@ const HomePage = () => {
    return (
       <div>
          {/* Hero Section */}
-         <section className="hero-section" style={styles.heroSection}>
+         <section className="hero-section container" style={styles.heroSection}>
             <h1 style={styles.typewriter}>Bienvenue sur CarMarket</h1>
             <p>
                Découvrez la plateforme idéale pour trouver votre prochaine voiture parmi une vaste sélection de véhicules de qualité, soigneusement vérifiés pour répondre à tous les besoins et budgets.
@@ -26,6 +26,7 @@ const HomePage = () => {
 // CSS styles
 const styles = {
    heroSection: {
+      fontSize: '15px',
       padding: '20px',
       textAlign: 'center',
       backgroundColor: '#f8f9fa',

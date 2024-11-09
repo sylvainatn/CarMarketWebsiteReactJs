@@ -26,16 +26,19 @@ const CarFilter = ({ onFilterChange }) => {
       setFilter({ ...filter, [name]: value });
    };
 
+   // Rechercher une voiture
    const handleSearchChange = (e) => {
       const value = e.target.value;
       setSearchTerm(value);
       onFilterChange({ ...filter, searchTerm: value });
    };
 
+   // Appliquer les filtres
    const handleApplyFilters = () => {
       onFilterChange({ ...filter, searchTerm });
    };
 
+   // Effacer les filtres
    const handleClearFilters = () => {
       setFilter(initialFilter);
       setSearchTerm('');

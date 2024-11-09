@@ -54,7 +54,7 @@ const Header = () => {
                      </NavLink>
                   </Nav>
 
-                  {/* Bouton de connexion aligné à droite */}
+                  {/* Bouton de connexion */}
                   <div className="text-end">
                      <NavLink to="/login">
                         <Button variant="outline-danger" className="btn">

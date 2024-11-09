@@ -13,15 +13,25 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
       }
    };
 
+   // Fonction pour déterminer l'indicateur de prix
+   const getPriceIndicator = (price) => {
+      if (price < 5000) return { label: "Très bonne affaire", color: "#4CAF50" };
+      if (price >= 5000 && price < 15000) return { label: "Bonne affaire", color: "#4CAF50" };
+      return { label: "Offre équitable", color: "grey" };
+   };
+
+   const priceIndicator = getPriceIndicator(car.price);
+
    return (
       <motion.div
          className="card bg-dark border-card h-100 d-flex flex-column"
          style={{
             margin: '10px',
             cursor: 'pointer',
-            width: '250px',
+            width: '100%', // Full width for responsive layout
+            maxWidth: '270px', // Limit max width for larger screens
             position: 'relative',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)', // Ajout de l'ombre
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
          }}
          initial={{ opacity: 0, y: 20 }}
          animate={{ opacity: 1, y: 0 }}
@@ -36,18 +46,38 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
                style={{
                   border: '1px solid #000',
                   height: '150px',
-                  objectFit: 'cover'
+                  objectFit: 'cover',
+                  width: '100%' // Ensures image is responsive
                }}
                alt={car.name}
             />
 
             <div className="card-body" style={{ padding: '10px' }}>
                <h5 className="card-title" style={{ fontSize: '1rem', color: '#fff' }}>{car.name}</h5>
-               <h4 style={{ marginBottom: '5px', color: '#fff', fontSize: '1.2rem' }}>
-                  <FaTag style={{ marginRight: '5px' }} /> Prix : {car.price} €
-               </h4>
 
-               {/* Utilisation d'une grille pour afficher les caractéristiques en 2 colonnes */}
+               {/* Conteneur flex pour le prix et l'indicateur de prix */}
+               <div className="d-flex align-items-center flex-wrap" style={{ gap: '10px', marginBottom: '10px' }}>
+                  <h4 style={{ color: '#fff', fontSize: '1.1rem', margin: 0 }}>
+                     <FaTag style={{ marginRight: '5px' }} /> Prix : {car.price} €
+                  </h4>
+
+                  {/* Indicateur de prix*/}
+                  <div
+                     style={{
+                        color: priceIndicator.color,
+                        border: `1px solid ${priceIndicator.color}`,
+                        borderRadius: '4px',
+                        padding: '3px 4px',
+                        fontSize: '0.7rem',
+                        display: 'inline-block',
+                        backgroundColor: 'transparent'
+                     }}
+                  >
+                     {priceIndicator.label}
+                  </div>
+               </div>
+
+               {/* Grille pour les caractéristiques */}
                <div className="row" style={{ marginBottom: '6px', color: '#fff', fontSize: '0.85rem' }}>
                   <div className="col-6" style={{ display: 'flex', alignItems: 'center' }}>
                      <FaCalendarAlt style={{ marginRight: '5px' }} /> {car.year}
@@ -79,9 +109,9 @@ const CarItem = ({ car, addToFavorites, removeFromFavorites, isFavorite }) => {
                fontSize: '1.5rem',
                color: isFavorite ? 'red' : 'white',
                cursor: 'pointer',
-               border: '1px solid #ccc', // Bord gris autour de l'icône
+               border: '1px solid #ccc',
                borderRadius: '5px',
-               padding: '3px', // Espace autour de l'icône
+               padding: '3px',
             }}
          />
       </motion.div>
