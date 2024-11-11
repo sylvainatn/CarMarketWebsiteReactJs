@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { FaCar } from 'react-icons/fa';
-// import './Header.css';  // Importer le fichier CSS
+import '../css/Header.css'; // css
 
 const Header = () => {
    return (
@@ -46,22 +46,14 @@ const Header = () => {
                         Favoris
                      </NavLink>
                      <NavLink
-                        to="/services"
+                        to="/login"
                         className={({ isActive }) =>
                            isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                      >
-                        Services
+                        Se connecter
                      </NavLink>
-                  </Nav>
 
-                  {/* Bouton de connexion */}
-                  <div className="text-end">
-                     <NavLink to="/login">
-                        <Button variant="outline-danger" className="btn">
-                           Se Connecter
-                        </Button>
-                     </NavLink>
-                  </div>
+                  </Nav>
                </Navbar.Collapse>
             </Container>
          </Navbar>

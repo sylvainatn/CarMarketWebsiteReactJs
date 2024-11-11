@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react'; // Importer useState pour gérer l'
 import { cars } from '../data';
 
 const CarDetails = ({ addToFavorites, removeFromFavorites, favorites }) => {
+
    const { id } = useParams();
+
    const car = cars.find((car) => car.id === parseInt(id));
 
    // Vérifie si la voiture existe avant d'utiliser useState

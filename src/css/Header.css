@@ -6,20 +6,22 @@
    padding: 5px 0;
    font-size: 1.3rem;
    transition: color 0.3s ease;
+   display: inline-block;
+   text-align: center;
 }
 
 /* Surlignage pour le lien actif et au survol */
 .nav-link::after {
    content: "";
    position: absolute;
-   left: 0;
+   left: 50%;
+   transform: translateX(-50%);
    bottom: -3px;
    width: 0;
    height: 2px;
    background-color: #ff4742;
    transition: width 0.3s ease;
    opacity: 0;
-   /* Masquer la ligne par défaut */
 }
 
 /* Animation au survol */
@@ -32,8 +34,6 @@
 .active-link::after {
    width: 100%;
    opacity: 1;
-   transition: width 0.3s ease;
-   /* Animation douce */
 }
 
 /* Fixer le header en haut de la page */
@@ -41,11 +41,8 @@
    position: sticky;
    top: 0;
    z-index: 1000;
-   /* Assurer que le header est au-dessus du contenu */
    background-color: #343a40;
-   /* Couleur du fond du header */
    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-   /* Ombre légère pour donner du relief */
    width: 100%;
 }
 
@@ -73,10 +70,43 @@
 /* Style des liens actifs */
 .sticky-header .nav-link.active-link {
    color: #ffffff;
-   /* Couleur du lien actif (par exemple jaune/orange) */
 }
 
 /* Style du bouton de connexion */
 .sticky-header .text-end .btn {
-   margin: 0px 10px;
+   margin: 0 10px;
+   font-size: 0.9rem;
+   /* Réduit la taille du texte du bouton */
+   padding: 5px 10px;
+   /* Ajuste le padding pour réduire la taille */
+}
+
+.login-btn {
+   font-size: '2px';
+   padding: '1px';
+   background: transparent;
+   margin-top: '12px';
+   /* display: inline-block; */
+}
+
+/* Adaptation pour mobile */
+@media (max-width: 767px) {
+   .sticky-header .navbar-nav {
+      text-align: center;
+   }
+
+   /* Centrer les liens de navigation */
+   .sticky-header .nav-link {
+      padding: 8px 0;
+      margin: 0 auto;
+      width: auto;
+   }
+
+   .login-btn {
+      font-size: '2px';
+      padding: '1px';
+      background: transparent;
+      margin-top: '12px';
+      /* display: inline-block; */
+   }
 }
