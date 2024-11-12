@@ -1,0 +1,102 @@
+/* Container */
+.container {
+   width: 100%;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px;
+}
+
+/* Search Bar */
+.search-bar {
+   margin-bottom: 16px;
+   display: flex;
+   justify-content: center;
+}
+
+.search-input {
+   width: 60%;
+   border-radius: 20px;
+   border: 1px solid #ccc;
+   padding: 10px 15px;
+   font-size: 16px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Toggle Button (visible on small screens) */
+.filter-toggle {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 12px;
+}
+
+.filter-toggle .btn-secondary {
+   display: flex;
+   align-items: center;
+   font-size: 14px;
+   padding: 8px 12px;
+}
+
+.filter-icon {
+   margin-right: 5px;
+   color: white;
+   width: 18px;
+   height: 18px;
+}
+
+/* Filter Box */
+.filter-box {
+   background-color: #f8f9fa;
+   border-radius: 8px;
+   padding: 16px;
+}
+
+.filter-header {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   margin-bottom: 16px;
+}
+
+.filter-header h3 {
+   font-size: 20px;
+   font-weight: bold;
+   margin: 0;
+}
+
+/* Grid Layout for Filters */
+.filter-grid {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   justify-content: center;
+}
+
+.filter-group {
+   display: flex;
+   flex-direction: column;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   padding: 10px;
+}
+
+.filter-group input,
+.filter-group select {
+   max-width: 120px;
+   font-size: 13px;
+   padding: 5px;
+   margin-bottom: 8px;
+}
+
+/* Filter Actions (Apply and Clear buttons) */
+.filter-actions {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-top: 16px;
+}
+
+.filter-actions .btn {
+   font-size: 13px;
+   width: 100px;
+   padding: 8px;
+}

@@ -26,29 +26,25 @@ const Header = () => {
                   <Nav className="ms-auto">
                      <NavLink
                         to="/acheter"
-                        className={({ isActive }) =>
-                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
+                        className={({ isActive }) => isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                      >
                         Acheter
                      </NavLink>
                      <NavLink
                         to="/vendre"
-                        className={({ isActive }) =>
-                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
+                        className={({ isActive }) => isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                      >
                         Vendre
                      </NavLink>
                      <NavLink
                         to="/favorites"
-                        className={({ isActive }) =>
-                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
+                        className={({ isActive }) => isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                      >
                         Favoris
                      </NavLink>
                      <NavLink
                         to="/login"
-                        className={({ isActive }) =>
-                           isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
+                        className={({ isActive }) => isActive ? 'nav-link px-2 active-link' : 'nav-link px-2'}
                      >
                         Se connecter
                      </NavLink>
