@@ -8,7 +8,7 @@ const HomePage = () => {
       <div>
          {/* Hero Section */}
          <section className="hero-section container" style={styles.heroSection}>
-            <h1 style={styles.typewriter}>Bienvenue sur CarMarket</h1>
+            <h1 style={styles.typewriter}>Bienvenue sur CarMarkete</h1>
             <p>
                Découvrez la plateforme idéale pour trouver votre prochaine voiture parmi une vaste sélection de véhicules de qualité, soigneusement vérifiés pour répondre à tous les besoins et budgets.
                <br />
